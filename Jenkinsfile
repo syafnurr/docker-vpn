@@ -23,11 +23,11 @@ pipeline {
         stage('Prepare Config Files') {
             steps {
                 script {
-                    sh 'rm -rf vpn'
-                    sh 'mkdir vpn'
+                    sh 'rm -rf vpn.ovpn'
+                    sh 'rm -rf auth.txt'
 
-                    writeFile(file: 'vpn/vpn.ovpn', text: sh(script: 'echo $OVPN_FILE | base64 -d', returnStdout: true).trim())
-                    writeFile(file: 'vpn/auth.txt', text: sh(script: 'echo $AUTH_FILE | base64 -d', returnStdout: true).trim())
+                    writeFile(file: 'vpn.ovpn', text: sh(script: 'echo $OVPN_FILE | base64 -d', returnStdout: true).trim())
+                    writeFile(file: 'auth.txt', text: sh(script: 'echo $AUTH_FILE | base64 -d', returnStdout: true).trim())
                 }
             }
         }

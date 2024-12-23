@@ -1,8 +1,8 @@
 version: "3.8"
 services:
-  service3:
+  docker-vpn:
     # build: .
-    image: safii/docker-vpn:${IMAGE_TAG}
+    image: safii/docker-vpn:34
     container_name: docker-vpn
     ports:
       - "3003:3003"

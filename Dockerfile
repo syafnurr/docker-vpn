@@ -1,15 +1,15 @@
 FROM node:18-alpine
 
 # Mendefinisikan argumen untuk file VPN dan autentikasi
-ARG VPN_CONFIG
-ARG AUTH_CONFIG
+# ARG VPN_CONFIG
+# ARG AUTH_CONFIG
 
 # Install dependencies
 RUN apk add --no-cache openvpn curl bash iproute2
 
 # Menyalin file VPN dan autentikasi menggunakan argumen build
-COPY ${VPN_CONFIG} /etc/openvpn/vpn-config.ovpn
-COPY ${AUTH_CONFIG} /etc/openvpn/auth.txt
+COPY vpn.ovpn /etc/openvpn/vpn-config.ovpn
+COPY auth.txt /etc/openvpn/auth.txt
 
 WORKDIR /app
 COPY package*.json ./
