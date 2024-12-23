@@ -2,7 +2,7 @@ FROM node:18-alpine
 
 # Mendefinisikan argumen untuk file VPN dan autentikasi
 ARG VPN_CONFIG
-ARG AUTH_FILE
+ARG AUTH_CONFIG
 
 # Install dependencies
 RUN apk add --no-cache openvpn curl bash iproute2
@@ -16,7 +16,7 @@ COPY package*.json ./
 RUN npm install
 COPY . .
 
-# Menjalankan OpenVPN dan menunggu koneksi VPN dalam Dockerfile
+# Menjalankan OpenVPN dan menunggu koneksi VPN
 RUN openvpn --config /etc/openvpn/vpn-config.ovpn --auth-user-pass /etc/openvpn/auth.txt --daemon && \
     echo "Waiting for VPN connection..." && \
     sleep 120 && \
