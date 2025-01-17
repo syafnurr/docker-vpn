@@ -9,5 +9,3 @@ echo "Checking VPN connection..."
 curl ifconfig.me
 
 node app.js
-
-
