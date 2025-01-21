@@ -27,4 +27,3 @@ app.get("/fetch-data", async (req, res) => {
 app.listen(PORT, () => {
   console.log(`Service running on port ${PORT}`);
 });
-
